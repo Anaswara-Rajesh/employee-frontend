@@ -2,11 +2,18 @@ import React, { useMemo } from "react";
 import SidebarHeader from "./SidebarHeader";
 import SideNavItem from "./SideNavItem";
 import { ImUsers } from "react-icons/im";
+import { RxDashboard } from "react-icons/rx";
 
 function SideBar() {
   const sideNavMenus = [
     {
       id: 1,
+      label: "Dashboard",
+      link: "/dashboard",
+      icon: <RxDashboard color="grey" />,
+    },
+    {
+      id: 2,
       label: "Employees",
       link: "/employee",
       icon: <ImUsers color="grey" />,
