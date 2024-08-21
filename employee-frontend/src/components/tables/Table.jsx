@@ -15,18 +15,12 @@ import {
 import classNames from "classnames";
 import React from "react";
 
-export const PrimaryTable =({ data, columns, onRowClick }) => {
+export const PrimaryTable = ({ data, columns, onRowClick }) => {
   const { getHeaderGroups, getRowModel } = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
-
-  const handleRowClick = (row) => {
-    if (onRowClick) {
-      onRowClick(row.original);
-    }
-  };
 
   const outerContainerClassName = classNames(
     "overflow-x-auto relative overflow-x-auto"
@@ -60,11 +54,7 @@ export const PrimaryTable =({ data, columns, onRowClick }) => {
         </TableHead>
         <TableBody>
           {getRowModel().rows.map((row) => (
-            <TableRow
-              key={row.id}
-              onClick={() => handleRowClick(row)}
-              className="cursor-pointer capitalize"
-            >
+            <TableRow key={row.id} className="cursor-pointer capitalize">
               {row.getVisibleCells().map((cell) => (
                 <TableCell key={cell.id}>
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}

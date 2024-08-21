@@ -20,6 +20,10 @@ const TWButton = ({
         return classnames(
           "flex items-center gap-2 rounded bg-[#10b981] py-1.5 px-3 font-medium text-white hover:bg-opacity-80"
         );
+      case "NON_PRIMARY":
+        return classnames(
+          "flex items-center gap-2 rounded bg-orange-400 py-1.5 px-3 font-medium text-white hover:bg-opacity-80"
+        );
       case "NONE":
         return classnames(
           "flex items-center gap-2 rounded py-1 px-1 font-medium text-white hover:bg-opacity-80"

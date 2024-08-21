@@ -1,7 +1,5 @@
-import React from 'react';
-import { useMemo } from 'react';
-import TWButton from '../button/TWButton';
-
+import React, { useMemo } from "react";
+import TWButton from "../button/TWButton";
 
 function TableTop({ buttons, title }) {
   const buttonList = useMemo(
@@ -14,9 +12,7 @@ function TableTop({ buttons, title }) {
       <div>
         <h3 className="text-lg font-bold text-black">{title}</h3>
       </div>
-      <div className="flex flex-col gap-4 2xsm:flex-row 2xsm:items-center">
-        {buttonList}
-      </div>
+      <div className="flex flex-wrap gap-4 items-center">{buttonList}</div>
     </div>
   );
 }
