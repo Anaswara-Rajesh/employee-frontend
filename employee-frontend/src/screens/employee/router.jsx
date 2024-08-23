@@ -1,9 +1,15 @@
-import React from 'react';
 import EmployeeList from './list/EmployeeList';
+import DashboardLayout from '../../components/layout/DashboardLayout'
 
-export const employeeRouter= [
+export const employeeRouter = [
   {
-    path: '/employee',
-    element: <EmployeeList />,
+    path: "/employee",
+    element: <DashboardLayout />, 
+    children: [
+      {
+        path: "",
+        element: <EmployeeList />,
+      },
+    ],
   },
 ];

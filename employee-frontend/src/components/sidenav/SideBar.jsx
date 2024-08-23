@@ -5,20 +5,27 @@ import { ImUsers } from "react-icons/im";
 import { RxDashboard } from "react-icons/rx";
 
 function SideBar() {
-  const sideNavMenus = [
-    {
-      id: 1,
-      label: "Dashboard",
-      link: "/dashboard",
-      icon: <RxDashboard color="grey" />,
-    },
-    {
-      id: 2,
-      label: "Employees",
-      link: "/employee",
-      icon: <ImUsers color="grey" />,
-    },
-  ];
+  const userRole = localStorage.getItem("role");
+  const sideNavMenus = useMemo(() => {
+    const menus = [
+      {
+        id: 1,
+        label: "Dashboard",
+        link: "/dashboard",
+        icon: <RxDashboard color="grey" />,
+      },
+    ];
+    if (userRole === "admin") {
+      menus.push({
+        id: 2,
+        label: "Employees",
+        link: "/employee",
+        icon: <ImUsers color="grey" />,
+      });
+    }
+
+    return menus;
+  }, [userRole]);
   const sideNavList = useMemo(
     () =>
       sideNavMenus.map((item) => (

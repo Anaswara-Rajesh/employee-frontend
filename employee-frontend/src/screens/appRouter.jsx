@@ -1,17 +1,9 @@
-import { Navigate } from "react-router-dom";
-import DashboardLayout from "../components/layout/DashboardLayout";
-import React from "react";
-import { employeeRouter } from "./employee/router";
+import { loginRouter } from "./login/router";
 import { dashboardRouter } from "./dashboard/router";
+import { employeeRouter } from "./employee/router";
 
 export const appRouter = [
-  {
-    path: "/",
-    element: <DashboardLayout />,
-    children: [
-      { index: true, element: <Navigate to="/dashboard" replace /> },
-      ...dashboardRouter,
-      ...employeeRouter,
-    ],
-  },
+  ...loginRouter,
+  ...dashboardRouter,
+  ...employeeRouter,
 ];

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { CustomModal } from "./CustomModal";
 import { FormInput } from "../form-inputs/FormInput";
+import { FormSelect } from "../form-inputs/FormSelect";
 
 export function AddEmployee({ open, onClose, onSubmit }) {
   const [formValues, setFormValues] = useState({
@@ -9,6 +10,7 @@ export function AddEmployee({ open, onClose, onSubmit }) {
     firstName: "",
     lastName: "",
     department: "",
+    role: "",
     email: "",
     mobile: "",
     username: "",
@@ -47,6 +49,12 @@ export function AddEmployee({ open, onClose, onSubmit }) {
         label="Last Name"
         name="lastName"
         value={formValues.lastName}
+        onChange={handleChange}
+      />
+      <FormSelect
+        name="role"
+        label="Role"
+        value={formValues.role}
         onChange={handleChange}
       />
       <FormInput
