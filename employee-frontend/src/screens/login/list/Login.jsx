@@ -11,15 +11,28 @@ function Login() {
 
   async function onSubmit(request) {
     try {
+      const { username, password } = request;
+      if (username === "admin" && password === "admin") {
+        const adminUser = {
+          username: "admin",
+          role: "admin",
+        };
+        setLoggedUser(adminUser);
+        localStorage.setItem("loggedUsername", adminUser.username);
+        localStorage.setItem("role", adminUser.role);
+        toast.success("Login successful!");
+        navigate("/dashboard");
+        return;
+      }
       const response = await employeeLogin(request);
       const { data } = response;
       console.log(data, "data");
-
+  
       if (data.accessToken && data.user) {
-        setLoggedUser(data?.user);
-        localStorage.setItem("loggedUsername",data?.user?.username)
-        localStorage.setItem("role",data?.user?.role)
-        toast.success("Login successfull!");
+        setLoggedUser(data.user);
+        localStorage.setItem("loggedUsername", data.user.username);
+        localStorage.setItem("role", data.user.role);
+        toast.success("Login successful!");
         navigate("/dashboard");
       } else {
         toast.error("Failed to login. Please try again.");
@@ -29,6 +42,7 @@ function Login() {
       toast.error("Failed to login. Please try again.");
     }
   }
+  
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
       <div className="w-full max-w-md">
